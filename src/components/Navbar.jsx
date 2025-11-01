@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import user from "../assets/user.png";
 const Navbar = () => {
   return (
-    <div className="w-11/12 mx-auto flex justify-between py-3">
+    <div className="w-11/12 mx-auto flex justify-between py-3 items-center">
       <div></div>
       <div className="flex gap-2 text-lg text-gray-500">
         <NavLink to="/">Home</NavLink>
