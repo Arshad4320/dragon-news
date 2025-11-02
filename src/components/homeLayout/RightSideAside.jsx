@@ -1,7 +1,12 @@
 import React from "react";
+import SocialLogin from "../SocialLogin";
 
 const RightSideAside = () => {
-  return <div>this is right side aside</div>;
+  return (
+    <div>
+      <SocialLogin />
+    </div>
+  );
 };
 
 export default RightSideAside;
