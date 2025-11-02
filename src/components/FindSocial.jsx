@@ -3,18 +3,19 @@ import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const FindSocial = () => {
   return (
-    <div className="flex flex-col items-center ">
-      <button className="flex items-center btn w-full text-lg">
+    <div className="flex flex-col py-8 ">
+      <h3 className="text-xl mb-2 font-semibold">Find Us On</h3>
+      <button className="justify-start btn w-full text-lg p-6">
         <FaFacebookF className="text-blue-500" size={20} />
         Facebook
       </button>
-      <button className="flex items-center btn w-full text-lg">
+      <button className="justify-start btn w-full text-lg p-6">
         {" "}
         <FaTwitter className="text-blue-500" size={20} />
         Twitter
       </button>
-      <button className="flex items-center btn w-full text-xl">
-        <FaInstagram size={20} /> Instagram
+      <button className="justify-start btn w-full text-lg p-6">
+        <FaInstagram size={20} className="text-rose-500" /> Instagram
       </button>
     </div>
   );
