@@ -1,6 +1,24 @@
+import { use } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../authProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const { loginUser } = use(AuthContext);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    loginUser(email, password)
+      .then((data) => {
+        e.target.reset();
+        toast.success("user logged successfully");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.errorMessage);
+      });
+  };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-10 w-full max-w-md">
@@ -10,7 +28,7 @@ const Login = () => {
 
         <hr className="mb-8" />
 
-        <form className="space-y-6">
+        <form onSubmit={handleLogin} className="space-y-6">
           {/* Email Field */}
           <div>
             <label className="block text-sm font-medium mb-1">

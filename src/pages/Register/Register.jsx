@@ -1,6 +1,7 @@
 import { use } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../authProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const { createUser } = use(AuthContext);
@@ -12,9 +13,10 @@ const Register = () => {
     const photo = e.target.photo.value;
     createUser(email, password)
       .then((data) => {
-        data.name = name;
-        data.photoUrl = photo;
+        data.user.displayName = name;
+        data.user.photoURL = photo;
         e.target.reset();
+        toast.success("user create successfully");
       })
       .catch((err) => {
         console.log(err.errorMessage);
