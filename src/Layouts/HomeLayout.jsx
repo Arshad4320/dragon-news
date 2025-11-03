@@ -20,13 +20,13 @@ class HomeLayout extends Component {
           <Navbar />
         </nav>
         <main className="w-11/12 mx-auto my-3 grid grid-cols-12 gap-4">
-          <aside className="col-span-3">
+          <aside className="col-span-3 sticky top-0 h-fit">
             <LeftSideAside />
           </aside>
           <section className="main col-span-6">
             <Outlet />
           </section>
-          <aside className="col-span-3">
+          <aside className="col-span-3 sticky top-0 h-fit">
             <RightSideAside />
           </aside>
         </main>
