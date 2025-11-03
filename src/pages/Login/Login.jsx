@@ -1,10 +1,13 @@
 import { use } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authProvider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
   const { loginUser } = use(AuthContext);
+  const location = useLocation();
+
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -13,6 +16,7 @@ const Login = () => {
       .then((data) => {
         e.target.reset();
         toast.success("user logged successfully");
+        navigate(location?.state || "/");
       })
       .catch((err) => {
         console.log(err);

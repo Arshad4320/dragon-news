@@ -9,6 +9,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import AuthLayout from "../Layouts/AuthLayout";
 import CategoryDetails from "../pages/CategoryDetails/CategoryDetails";
+import PrivetRoute from "./../authProvider/PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/category-details/:id",
-    element: <CategoryDetails />,
+    element: (
+      <PrivetRoute>
+        <CategoryDetails />
+      </PrivetRoute>
+    ),
     loader: () => fetch("/news.json"),
   },
 ]);
