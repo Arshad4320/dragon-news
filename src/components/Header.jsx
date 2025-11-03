@@ -6,7 +6,6 @@ const Header = () => {
   return (
     <div className="flex justify-center py-10 flex-col items-center">
       <div>
-        {user}
         <img src={logo} alt="" />
         <p className="text-xl text-center">Journalism Without Fear or Favour</p>
         <p className="text-xl font-medium text-center">

@@ -1,6 +1,26 @@
+import { use } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../authProvider/AuthProvider";
 
 const Register = () => {
+  const { createUser } = use(AuthContext);
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const photo = e.target.photo.value;
+    createUser(email, password)
+      .then((data) => {
+        data.name = name;
+        data.photoUrl = photo;
+        e.target.reset();
+      })
+      .catch((err) => {
+        console.log(err.errorMessage);
+      });
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
@@ -10,7 +30,7 @@ const Register = () => {
 
         <hr className="mb-8" />
 
-        <form className="space-y-6">
+        <form onSubmit={handleRegister} className="space-y-6">
           {/* Name Field */}
           <div>
             <label className="block text-sm font-medium mb-1">Your Name</label>
