@@ -11,6 +11,7 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
   console.log(user);
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -19,7 +20,7 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
   const logOut = () => {
-    signOut(auth);
+    return signOut(auth);
   };
   const userInfo = { createUser, loginUser, user, logOut };
 
@@ -30,7 +31,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [user]);
   return <AuthContext value={userInfo}>{children}</AuthContext>;
 };
 

@@ -2,6 +2,7 @@ import { use } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../authProvider/AuthProvider";
 import { toast } from "react-toastify";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser } = use(AuthContext);
@@ -13,10 +14,13 @@ const Register = () => {
     const photo = e.target.photo.value;
     createUser(email, password)
       .then((data) => {
-        data.user.displayName = name;
-        data.user.photoURL = photo;
-        e.target.reset();
-        toast.success("user create successfully");
+        updateProfile(data.user, {
+          displayName: name,
+          photoURL: photo,
+        }).then(() => {
+          e.target.reset();
+          toast.success("user create successfully");
+        });
       })
       .catch((err) => {
         console.log(err.errorMessage);

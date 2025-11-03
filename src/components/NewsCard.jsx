@@ -1,8 +1,17 @@
 import { FaBookmark, FaShareAlt, FaEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const NewsCard = ({ item }) => {
-  const { title, author, thumbnail_url, details, total_view, rating, tags } =
-    item;
+  const {
+    id,
+    title,
+    author,
+    thumbnail_url,
+    details,
+    total_view,
+    rating,
+    tags,
+  } = item;
   return (
     <div className="card bg-base-100 shadow-md rounded-xl overflow-hidden mb-5">
       {/* Author + Date + Action */}
@@ -50,9 +59,12 @@ const NewsCard = ({ item }) => {
         <p className="text-gray-700 text-sm leading-relaxed mb-2">
           {details.slice(0, 180)}...
         </p>
-        <button className="text-orange-300 font-semibold hover:underline">
+        <Link
+          to={`/category-details/${id}`}
+          className="text-orange-300 font-semibold hover:underline"
+        >
           Read More
-        </button>
+        </Link>
 
         {/* Footer Section */}
         <div className="flex justify-between items-center mt-4  pt-3 text-sm text-gray-600">
